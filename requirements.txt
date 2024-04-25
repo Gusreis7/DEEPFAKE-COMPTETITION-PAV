@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 torch
 matplotlib
 torchvision
@@ -6,3 +7,12 @@ tqdm
 librosa
 numpy
 scikit-learn
+=======
+tqdm
+librosa
+matplotlib
+torch==2.2.1
+transformers
+pandas==2.0.3
+torchaudio==2.2.1
+>>>>>>> 7ce5f8b (api v1.2)
