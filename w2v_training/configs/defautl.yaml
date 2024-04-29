@@ -8,6 +8,7 @@ data:
     target_dbfs: -31.187887972911266
     pad_audios: true
     apply_augmentation: false
+    max_audio_len: 3
     audio_augmentator: [
         {
             "name": "pitch_shift",

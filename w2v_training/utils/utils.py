@@ -30,22 +30,21 @@ def compute_metrics(eval_pred):
 
 def map_path(batch, cfg):
     """Maps the real path to the audio files"""
-    path = os.path.join(batch[cfg.metadata.audio_path_column].lstrip('/'))
+    path = os.path.join(batch[cfg.metadata.audio_path_column])
     batch['input_values'] = path
     return batch
 
 
-def preprocess_metadata(base_dir: str , cfg: DictConfig, df: pd.DataFrame):
+def preprocess_metadata(cfg: DictConfig, df: pd.DataFrame):
     """Maps the real path to the audio files"""
     df.reset_index(drop=True, inplace=True)
 
     df_dataset = Dataset.from_pandas(df)
     df_dataset = df_dataset.map(
         map_path,
-        fn_kwargs={"base_dir": base_dir, "cfg": cfg},
+        fn_kwargs={"cfg": cfg},
         num_proc=cfg.train.num_workers
     )
-
     return df_dataset
 
 
@@ -180,6 +179,7 @@ class DataColletorTrain:
                     input_tensor = self.audio_augmentator(input_tensor, sample_rate=self.sampling_rate).tolist()
 
                 input_features.append({"input_values": input_tensor})
+
                 label_features.append(int(self.label2id[feature["label"]]))
             except Exception:
                 print("Error during load of audio:", feature["input_values"])

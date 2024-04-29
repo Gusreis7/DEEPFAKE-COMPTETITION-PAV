@@ -24,7 +24,7 @@ def main() -> None:
     parser.add_argument(
         '-c',
         '--config_path',
-        default='config/default.yaml',
+        default='configs/defautl.yaml',
         type=str,
         help="YAML file with configurations"
     )
@@ -37,7 +37,6 @@ def main() -> None:
     args = parser.parse_args()
 
     cfg = OmegaConf.load(args.config_path)
-
     if os.path.isdir(cfg.train.model_checkpoint):
         last_checkpoint = get_last_checkpoint(cfg.train.model_checkpoint)
         print("> Resuming Train with checkpoint: ", last_checkpoint)
@@ -55,18 +54,17 @@ def main() -> None:
     metadatas_val = [
         '/home/gustavo/Projects/PAV/DEEPFAKE-COMPTETITION-PAV/audios/metadata/validacao.csv'
     ]
-    modelo_to_save = cfg.model_checkpoint
+    modelo_to_save = cfg.train.model_checkpoint
     logging = cfg.logging
     for metadata_train, metadata_validation in zip(metadatas_train,metadatas_val):
         train_df = pd.read_csv(metadata_train)
         print("Training with metadata: ", metadata_train)
         log_name = f'{logging}-{modelo_to_save}'
-        weights_output_path = cfg.weights_output_path
+        weights_output_path = cfg.train.weights_output_path
         val_df = pd.read_csv(metadata_validation)
 
-        train_dataset = preprocess_metadata(base_dir='', cfg=cfg, df=train_df)
-        val_dataset = preprocess_metadata(base_dir='', cfg=cfg, df=val_df)
-
+        train_dataset = preprocess_metadata(df=train_df, cfg=cfg)
+        val_dataset = preprocess_metadata(df=val_df, cfg=cfg)
         label2id = {
             'real':0,
             'fake':1

@@ -6,3 +6,9 @@ tqdm
 librosa
 numpy
 scikit-learn
+omegaconf
+transformers
+pydub
+datasets
+PyYAML==5.4.1
+accelarate
