@@ -1,0 +1,44 @@
+metadata:
+    audio_path_column: "file_path"
+    label_column: "label"
+
+data:
+    target_sampling_rate: 16000
+    apply_dbfs_norm: false
+    target_dbfs: -31.187887972911266
+    pad_audios: true
+    apply_augmentation: false
+    audio_augmentator: [
+        {
+            "name": "pitch_shift",
+            "min_semitones": -3,
+            "max_semitones": 3,
+            "p": 0.25 # propability of apply this method, 0 is disable
+        },
+        {
+            "name": "gaussian",
+            "min_amplitude": 0.0001,
+            "max_amplitude": 0.001,
+            "p": 0.25 # propability of apply this method, 0 is disable
+        }
+    ]
+
+train:
+    model_checkpoint: "facebook/wav2vec2-xls-r-300m"
+    weights_output_path: 'checkpoints/${logging.run_name}/train'
+    seed: 42
+    epochs: 20
+    metric: "f1"
+    batch_size: 2
+    num_workers: 4
+    warmup_ratio: 0.1
+    logging_steps: 10
+    learning_rate: 0.00003
+    save_total_limit: 2
+    use_early_stop: False
+    early_stop_epochs: 10
+    gradient_accumulation_steps: 4
+
+
+logging:
+    run_name: "wav2vec2-xls-r-300m-pt-br-deepfakedetection"
