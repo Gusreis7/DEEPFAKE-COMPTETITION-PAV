@@ -43,7 +43,7 @@ def preprocess_metadata(cfg: DictConfig, df: pd.DataFrame):
     df_dataset = df_dataset.map(
         map_path,
         fn_kwargs={"cfg": cfg},
-        num_proc=cfg.train.num_workers
+        num_proc=4
     )
     return df_dataset
 
@@ -69,6 +69,8 @@ def predict(test_dataloader, model, cfg):
     model.eval()
     preds = []
     paths = []
+    probs = []
+    logs = []
     with torch.no_grad():
         for batch in tqdm.tqdm(test_dataloader):
             input_values, attention_mask = batch['input_values'].to(device), batch['attention_mask'].to(device)
@@ -77,10 +79,12 @@ def predict(test_dataloader, model, cfg):
 
             scores = F.softmax(logits, dim=-1)
             pred = torch.argmax(scores, dim=1).cpu().detach().numpy()
-
+            paths.extend(batch[cfg.metadata.audio_path_column])
             preds.extend(pred)
+            probs.extend(scores.cpu().detach().numpy())
+            logs.extend(logits.cpu().detach().numpy())
 
-    return preds
+    return paths, preds, probs,logs
 
 
 def map_data_augmentation(aug_config):
@@ -207,7 +211,8 @@ class DataColletorTest:
         max_length: Optional[int] = None,
         pad_to_multiple_of: Optional[int] = None,
         label2id: Dict = None,
-        max_audio_len: int = 20
+        max_audio_len: int = 20,
+        filepath_column: str = 'file_path'
     ):
 
         self.processor = processor
@@ -220,12 +225,14 @@ class DataColletorTest:
         self.label2id = label2id
 
         self.max_audio_len = max_audio_len
+        self.filepath_column = filepath_column
 
     def __call__(self, features: List[Dict[str, Union[List[int], torch.Tensor]]]) -> Dict[str, torch.Tensor]:
         # split inputs and labels since they have to be of different lenghts and need
         # different padding methods
         input_features = []
         label_features = []
+        audio_paths = []
         for feature in features:
             # Load wav
             speech_array, sampling_rate = torchaudio.load(feature["input_values"])
@@ -248,7 +255,8 @@ class DataColletorTest:
             input_tensor = np.squeeze(input_tensor)
 
             input_features.append({"input_values": input_tensor})
-            label_features.append(int(self.label2id[feature["label"]]))
+            audio_paths.append(feature[self.filepath_column])
+            #label_features.append(int(self.label2id[feature["label"]]))
 
         batch = self.processor.pad(
             input_features,
@@ -258,8 +266,8 @@ class DataColletorTest:
             return_tensors="pt",
         )
 
-        batch["labels"] = torch.tensor(label_features)
-
+        #batch["labels"] = torch.tensor(label_features)
+        batch[self.filepath_column] = audio_paths
         return batch
 
 def save_conf_matrix(

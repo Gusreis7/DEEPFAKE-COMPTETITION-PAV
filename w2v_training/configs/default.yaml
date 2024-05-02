@@ -30,7 +30,7 @@ train:
     seed: 42
     epochs: 20
     metric: "f1"
-    batch_size: 2
+    batch_size: 1
     num_workers: 4
     warmup_ratio: 0.1
     logging_steps: 10

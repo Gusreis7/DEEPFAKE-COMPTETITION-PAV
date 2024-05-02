@@ -24,7 +24,7 @@ def main() -> None:
     parser.add_argument(
         '-c',
         '--config_path',
-        default='configs/defautl.yaml',
+        default='configs/default.yaml',
         type=str,
         help="YAML file with configurations"
     )
@@ -49,10 +49,10 @@ def main() -> None:
         audio_augmentator = None
 
     metadatas_train = [
-        '/home/gustavo/Projects/PAV/DEEPFAKE-COMPTETITION-PAV/audios/metadata/treino.csv'
+        '../audios/metadata/treino.csv'
     ]
     metadatas_val = [
-        '/home/gustavo/Projects/PAV/DEEPFAKE-COMPTETITION-PAV/audios/metadata/validacao.csv'
+        '../audios/metadata/validacao.csv'
     ]
     modelo_to_save = cfg.train.model_checkpoint
     logging = cfg.logging
