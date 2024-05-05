@@ -8,7 +8,7 @@ data:
     target_dbfs: -31.187887972911266
     pad_audios: true
     apply_augmentation: false
-    max_audio_len: 3
+    max_audio_len: 4
     audio_augmentator: [
         {
             "name": "pitch_shift",
@@ -25,12 +25,12 @@ data:
     ]
 
 train:
-    model_checkpoint: "facebook/wav2vec2-xls-r-300m"
+    model_checkpoint: "facebook/wav2vec2-base"
     weights_output_path: 'checkpoints/${logging.run_name}/train'
     seed: 42
     epochs: 20
     metric: "f1"
-    batch_size: 1
+    batch_size: 2
     num_workers: 4
     warmup_ratio: 0.1
     logging_steps: 10
@@ -42,4 +42,4 @@ train:
 
 
 logging:
-    run_name: "wav2vec2-xls-r-300m-pt-br-deepfakedetection"
+    run_name: "${train.model_checkpoint}-deepfakedetection"
