@@ -28,6 +28,19 @@ def main() -> None:
         type=str,
         help="YAML file with configurations"
     )
+
+    parser.add_argument(
+        '-n',
+        '--name',
+        type=str
+    )
+
+    parser.add_argument(
+        '-ls',
+        '--label_smoothing',
+        type=float
+    )
+
     parser.add_argument(
         '--continue_train',
         default=False,
@@ -35,7 +48,7 @@ def main() -> None:
         help='If True, continues training using the checkpoint_path parameter'
     )
     args = parser.parse_args()
-
+    name = args.name
     cfg = OmegaConf.load(args.config_path)
     if os.path.isdir(cfg.train.model_checkpoint):
         last_checkpoint = get_last_checkpoint(cfg.train.model_checkpoint)
@@ -81,6 +94,8 @@ def main() -> None:
             num_labels=len(label2id.keys()),
             label2id=label2id,
             id2label=id2label,
+            ignore_mismatched_sizes=True
+
         )
 
         data_collator = DataColletorTrain(
@@ -115,6 +130,7 @@ def main() -> None:
             logging_first_step=True,
             greater_is_better=True,
             seed=cfg.train.seed,
+            label_smoothing_factor=args.label_smoothing,
             fp16=True
         )
 
@@ -134,7 +150,7 @@ def main() -> None:
         print("> Starting Training")
         train_result = trainer.train(resume_from_checkpoint=last_checkpoint if args.continue_train else None)
         # Save best model
-        trainer.save_model(f'models/best_model_{modelo_to_save}')
+        trainer.save_model(f'models/best_model_{modelo_to_save}{name}')
 
         # Save train results
         metrics = train_result.metrics

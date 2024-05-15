@@ -95,6 +95,10 @@ def map_data_augmentation(aug_config):
         return AddGaussianNoise(**aug_config)
     elif aug_name == 'pitch_shift':
         return PitchShift(**aug_config)
+    elif aug_name == 'time_mask':
+        return TimeMask(**aug_config)
+    elif aug_name == 'low_pass_filter':
+        return LowPassFilter(**aug_config)
     else:
         raise ValueError("The data augmentation '" + aug_name + "' doesn't exist !!")
 

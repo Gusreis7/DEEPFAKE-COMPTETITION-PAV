@@ -1,4 +1,4 @@
 audios
 Testes_locais
-w2v_training/models
-w2v_training/checkpoints/wav2vec2-xls-r-300m-pt-br-deepfakedetection
+W2V/models
+W2V/checkpoints/wav2vec2-xls-r-300m-pt-br-deepfakedetection
