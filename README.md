@@ -74,7 +74,7 @@ O melhor modelo para a competição foi o fine tuning do modelo https://huggingf
 
 Esse modelo foi o ganhador da competição com um score privado de 0.23 de loss
 
-O modelo final foi testado no dataset [ASVspoof 2019 Dataset](https://www.kaggle.com/datasets/awsaf49/asvpoof-2019-dataset) que é um dataset para avaliar modelos nessa task e coseguiu atingir boas métricas:
+O modelo final foi testado no dataset [ASVspoof 2019 Dataset](https://www.kaggle.com/datasets/awsaf49/asvpoof-2019-dataset) que é um dataset para avaliar modelos nessa task e conseguiu atingir boas métricas:
 
 | Métrica             | Valor  |
 | ------------------- | ------ |
