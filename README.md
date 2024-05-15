@@ -69,3 +69,13 @@ O modelo final foi testado no dataset [ASVspoof 2019 Dataset](https://www.kaggle
 * F1-Score:0.9363
 
 * Equal Error Rate (EER):  0.0401
+
+| Modelo                                                                         | F1   | KP   | kPriv |
+| ------------------------------------------------------------------------------ | ---- | ---- | ----- |
+| wav2vec base                                                                   | 0,98 | 4,41 | 5,14  |
+| wav2vec base + ls 0.2                                                          | 0,98 | 0,57 | 0,5   |
+| wav2vec2-large-xlsr-53-gender-recognition-librispeechxls                       | 0,98 | 0,57 | 0,6   |
+| Fine tuning wav2vec2-large-xlsr-53-gender-recognition-librispeechxls + ls      | 0,96 | 0,38 | 0,45  |
+| Fine tuning wav2vec2-large-xlsr-53-gender-recognition-librispeechxls + ls + dg | 0,94 | 0,36 | 0,28  |
+| wav2vec2-large-xlsr-53-gender-recognition-librispeechxls + ls + dg + 10 epochs | 0,95 | 0,26 | 0,23  |
+
