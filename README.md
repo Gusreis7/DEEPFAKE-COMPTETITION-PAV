@@ -52,23 +52,19 @@ Esse modelo foi o ganhador da competição com um score privado de 0.23 de loss
 
 O modelo final foi testado no dataset [ASVspoof 2019 Dataset](https://www.kaggle.com/datasets/awsaf49/asvpoof-2019-dataset) que é um dataset para avaliar modelos nessa task e coseguiu atingir boas métricas:
 
-### Amostras do conjunto de avalição:
+| Métrica             | Valor  |
+| ------------------- | ------ |
+| Acurácia            | 0.9286 |
+| Precisão            | 0.9999 |
+| Revocação           | 0.9205 |
+| F1-Score            | 0.9363 |
+| Equal Error Rate    | 0.0401 |
 
-* real : 7355
+### Amostras do conjunto de avaliação:
 
-* fake : 63882
+- real : 7355
+- fake : 63882
 
-### Métricas: 
-
-* Acuracia:0.9286
-
-* Precisão:0.9999
-
-* Recall:0.9205
-
-* F1-Score:0.9363
-
-* Equal Error Rate (EER):  0.0401
 
 | Modelo                                                                         | F1   | KP   | kPriv |
 | ------------------------------------------------------------------------------ | ---- | ---- | ----- |
