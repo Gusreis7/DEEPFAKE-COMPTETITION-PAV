@@ -14,9 +14,15 @@ Evellyn Nicole - nicole@discente.ufg.br
 
 ## Problema
 
-Com o surgimento de vários modelos de IA de transferência de voz e text-to-speech(TTS) com desempenho cada vez melhor em sintetizar a fala humana, surge a necessidade de modelos de IA capazes de identificar quando uma fala é sintética(fake) ou não(real). Esse repositório explora algumas técnicas e modelos para realizar essa classificação.
+Com o avanço significativo na tecnologia de inteligência artificial, especialmente na área de transferência de voz e text-to-speech (TTS), os modelos estão se tornando cada vez mais eficientes em sintetizar a fala humana de maneira natural. No entanto, esse progresso traz consigo novos desafios, um dos quais é a detecção de fala sintética ou "fake".
 
-A natureza desse problema exige que soluções sejam robustas a erros e errem o mínimo de falso positivos possiveis.
+Esse exercício é crucial, especialmente em um contexto em que a disseminação de informações através de áudio e vídeo é cada vez mais comum. Com o aumento do uso de tecnologias associadas à voz, há uma necessidade crescente de garantir a autenticidade e a integridade da comunicação. 
+
+Dito isso, surge a necessidade de desenvolver modelos capazes de distinguir entre fala sintética ("fake") e fala humana autêntica ("real"). Esses modelos desempenham um papel crucial na identificação de conteúdo gerado por máquinas, como deepfakes de áudio, que podem ser usados para enganar, difamar ou manipular.
+
+As soluções de detecção de fala sintética devem ser altamente robustas e precisas, com o objetivo de minimizar ao máximo os falsos positivos. Ou seja, evitar situações em que a fala humana autêntica seja erroneamente classificada como sintética, o que pode resultar em diversas consequências negativas, como censura injusta ou desconfiança na precisão dos sistemas de detecção.
+
+Portanto, este repositório busca explorar diversas técnicas e modelos para abordar esse problema desafiador, com foco em desenvolver soluções que sejam não apenas precisas na identificação de fala sintética, mas também robustas o suficiente para garantir um baixo índice de falsos positivos.
 
 ## Modelos usados
 Para realizar essa classificação foi testada uma gama de modelos. De uma CNN a um modelo transformer para classificação(wav2vec), a ideia é que esses algoritmos consigam através do áudio bruto ou de features extraídas, como o Mel Spectograma, aprender a realizar a classificação.
