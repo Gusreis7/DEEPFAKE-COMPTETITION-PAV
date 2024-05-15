@@ -52,41 +52,13 @@ ResNet18-Extractor - Códigos para usar a Resnet18 como feature extractor.
 
 W2V - Codigos para treinar e testar modelos wav2vec2 like.
 
-##  Resultados da CNN em dados de Validação
-
-| Métrica        | Valor                  |
-| -------------- | ---------------------- |
-| Acurácia       | 0.85                   |
-| Precisão       | 0.87                    |
-| Recall         | 0.89                    |
-| F1-Score       | 0.88                    |
-| Score Kaggle   | 0.70 (público); 0.64 (privado) |
-
-## Resultado Métricas SVM em dados de Validação
-
-| Métrica        | Valor                            |
-| -------------- | -------------------------------- |
-| Acurácia       | 0.90                             |
-| Precisão       | 0.86 (real); 0.92 (fake)         |
-| Recall         | 0.85 (real); 0.93 (fake)         |
-| F1-Score       | 0.85 (real), 0.92 (fake)         |
-| Score Kaggle   | 0.60 (público); 0.66 (privado)   |
-
-## Resultado ResNet-18 em dados de Validação
-
-| Métrica      | Valor                            |
-| ------------ | -------------------------------- |
-| Acurácia     | 0.87                             |
-| Precisão     | 0.87                             |
-| Recall       | 0.93                             |
-| F1-Score     | 0.90                             |
-| Score Kaggle | 0.76374 (público); 0.71698 (privado) |
-
-
-## Resultados do Modelo wav2vec
+## Resultados dos Modelos 
 
 | Modelo                                                                         | F1   | KP   | kPriv |
 | ------------------------------------------------------------------------------ | ---- | ---- | ----- |
+| CNN                                                                            | 0.88 | 0,70 | 0,64  |
+| SVM                                                                            | 0,85 | 0,60 | 0,66  |
+| ResNet-18                                                                      | 0,90 | 0.76 | 0.71  |
 | wav2vec base                                                                   | 0,98 | 4,41 | 5,14  |
 | wav2vec base + ls 0.2                                                          | 0,98 | 0,57 | 0,5   |
 | wav2vec2-large-xlsr-53-gender-recognition-librispeechxls                       | 0,98 | 0,57 | 0,6   |
