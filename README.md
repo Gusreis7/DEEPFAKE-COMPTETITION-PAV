@@ -39,14 +39,16 @@ O processo está mais bem documentato no relátorio final da competição: [Rela
 
 Os codigos usados estão implementados pasta a pasta em API que permitem a flexibilização de experimentos.
 
-NN/training -> Codigos para treinar redes neurais e convolucionais.
+NN/training -> Codigos para treinar redes neurais e convolucionais e algortimos clássicos.
 
 ResNet18-Extractor - Codigos para usar a Resnet18 como feature extractor.
 
 W2C - Codigos para treinar e testar modelos wav2vec2 like. 
 ## Modelo Final
 
-O melhor modelo para a competição foi o fine tuning do modelo TODO , disponivel em TODO. Os outros modelos e técnicas exploradas tamém apresentaram bons resultados.
+O melhor modelo para a competição foi o fine tuning do modelo https://huggingface.co/alefiury/wav2vec2-large-xlsr-53-gender-recognition-librispeech com label smoothing de 0.2 e data augmentation, disponivel em https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification . Os outros modelos e técnicas exploradas tamém apresentaram bons resultados.
+
+Esse modelo foi o ganhador da competição com um score privado de 0.23 de loss
 
 O modelo final foi testado no dataset ASVspoof 2019 Dataset que é um datasets ultilizados para avaliar essa task no estado da arte e coseguiu atingir boas métricas:
 

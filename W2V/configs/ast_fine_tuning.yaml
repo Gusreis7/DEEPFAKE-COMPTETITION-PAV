@@ -21,7 +21,7 @@ data:
     ]
 
 train:
-    model_checkpoint: "/content/drive/MyDrive/DEEPFAKE-COMPTETITION-PAV/w2v_training/models/best_model_alefiury/wav2vec2-large-xlsr-53-gender-recognition-librispeechxls_gender_id"
+    model_checkpoint: ""
     weights_output_path: '../../../../checkpoints/${logging.run_name}/train'
     seed: 42
     epochs: 10
