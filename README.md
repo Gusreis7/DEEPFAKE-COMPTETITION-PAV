@@ -46,14 +46,23 @@ O processo está melhor documentado no relátorio final da competição: [Relat�
 
 Os códigos usados estão implementados pasta a pasta em API que permitem a flexibilização de experimentos.
 
-NN/training -> Códigos para treinar redes neurais e convolucionais e algortimos clássicos.
+NN/training - Códigos para treinar redes neurais e convolucionais e algortimos clássicos.
 
 ResNet18-Extractor - Códigos para usar a Resnet18 como feature extractor.
 
 W2V - Codigos para treinar e testar modelos wav2vec2 like.
 
+##  Resultados da CNN em dados de Validação
 
-## Resultado Métricas SVM em dados de validação
+| Métrica        | Valor                  |
+| -------------- | ---------------------- |
+| Acurácia       | 0.85                   |
+| Precisão       | 0.87                    |
+| Recall         | 0.89                    |
+| F1-Score       | 0.88                    |
+| Score Kaggle   | 0.70 (público); 0.64 (privado) |
+
+## Resultado Métricas SVM em dados de Validação
 
 | Métrica        | Valor                            |
 | -------------- | -------------------------------- |
@@ -63,14 +72,16 @@ W2V - Codigos para treinar e testar modelos wav2vec2 like.
 | F1-Score       | 0.85 (real), 0.92 (fake)         |
 | Score Kaggle   | 0.60 (público); 0.66 (privado)   |
 
-##  Resultados da CNN em dados de validação
-| Métrica        | Valor                  |
-| -------------- | ---------------------- |
-| Acurácia       | 0.85                   |
-| Precisão       | 0.87                    |
-| Recall         | 0.89                    |
-| F1-Score       | 0.88                    |
-| Score Kaggle   | 0.70 (público); 0.64 (privado) |
+## Resultado ResNet-18 em dados de Validação
+
+| Métrica      | Valor                            |
+| ------------ | -------------------------------- |
+| Acurácia     | 0.87                             |
+| Precisão     | 0.87                             |
+| Recall       | 0.93                             |
+| F1-Score     | 0.90                             |
+| Score Kaggle | 0.76374 (público); 0.71698 (privado) |
+
 
 ## Resultados do Modelo wav2vec
 
