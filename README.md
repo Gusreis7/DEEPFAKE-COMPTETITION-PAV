@@ -54,7 +54,7 @@ W2V - Codigos para treinar e testar modelos wav2vec2 like.
 
 ## Resultados dos Modelos 
 
-| Modelo                                                                         | F1   | KP   | kPriv |
+| Modelo                                                                         | F1   | Kpubli   | kPriv |
 | ------------------------------------------------------------------------------ | ---- | ---- | ----- |
 | CNN                                                                            | 0.88 | 0,70 | 0,64  |
 | SVM                                                                            | 0,85 | 0,60 | 0,66  |
@@ -66,6 +66,8 @@ W2V - Codigos para treinar e testar modelos wav2vec2 like.
 | Fine tuning wav2vec2-large-xlsr-53-gender-recognition-librispeechxls + ls + dg | 0,94 | 0,36 | 0,28  |
 | wav2vec2-large-xlsr-53-gender-recognition-librispeechxls + ls + dg + 10 epochs | 0,95 | 0,26 | 0,23  |
 
+* F1 - F1-Score; kpubli - Loss competição kaggle publica;  kpriv - Loss competição kaggle privada;
+* ls - label_smoothing 0.2;  dg - data augmentation
 ## Modelo Final
 
 O melhor modelo para a competição foi o fine tuning do modelo https://huggingface.co/alefiury/wav2vec2-large-xlsr-53-gender-recognition-librispeech com label smoothing de 0.2 e data augmentation, disponivel em https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification . Os outros modelos e técnicas exploradas também apresentaram bons resultados.
